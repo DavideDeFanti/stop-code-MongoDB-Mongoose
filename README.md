@@ -1,3 +1,5 @@
-# Node Starter Typescript
+# Stop & code MongoDB-Mongoose
 
-Progetto **npm** con _typescript_
+Installare il node_modules da terminale, `npm install`
+
+Inizializzare il programma da terminale, `npm start`
