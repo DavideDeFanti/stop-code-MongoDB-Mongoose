@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface ICategoria {
+interface IPosts {
     titolo: string;
     contenuto: string;
     autore: string;
@@ -8,7 +8,7 @@ interface ICategoria {
     dataModifica?: Date;
 }
 
-const categoriaSchema = new mongoose.Schema<ICategoria>({
+const PostsSchema = new mongoose.Schema<IPosts>({
     titolo: { type: String, required: true },
     contenuto: { type: String, required: true },
     autore: { type: String, required: true },
@@ -16,4 +16,4 @@ const categoriaSchema = new mongoose.Schema<ICategoria>({
     dataModifica: { type: Date, default: Date.now() },
 })
 
-export const Categoria = mongoose.model<ICategoria>('Categoria', categoriaSchema);
+export const Posts = mongoose.model<IPosts>('Posts', PostsSchema);

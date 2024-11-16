@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import { Categoria } from "./models/categoria";
+import { Posts } from "./models/categoria";
 
 export const insertPost = async (titolo: string, contenuto: string, autore: string, dataCreazione: Date) => {
     try {
         await mongoose.connect(process.env.MONGODB_CONNECTION_STRING!, { dbName: "blogPosts" });
 
-        const newPost = new Categoria()
+        const newPost = new Posts()
         newPost.titolo = titolo;
         newPost.contenuto = contenuto;
         newPost.autore = autore;
@@ -23,7 +23,7 @@ export const insertPost = async (titolo: string, contenuto: string, autore: stri
 export const getPosts = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_CONNECTION_STRING!, { dbName: "blogPosts" });
-        return await Categoria.find();
+        return await Posts.find();
     } catch (error) {
         console.log(error);
     } finally {
@@ -35,7 +35,7 @@ export const updatePost = async (id: string, titolo: string, contenuto: string, 
     try {
         await mongoose.connect(process.env.MONGODB_CONNECTION_STRING!, { dbName: "blogPosts" });
 
-        return await Categoria.findByIdAndUpdate(id, { titolo, contenuto, autore, dataModifica }, { new: true });
+        return await Posts.findByIdAndUpdate(id, { titolo, contenuto, autore, dataModifica }, { new: true });
     } catch (error) {
         console.log(error);
     } finally {
@@ -46,7 +46,7 @@ export const updatePost = async (id: string, titolo: string, contenuto: string, 
 export const deletePost = async (id: string) => {
     try {
         await mongoose.connect(process.env.MONGODB_CONNECTION_STRING!, { dbName: "blogPosts" });
-        return await Categoria.findByIdAndDelete(id);
+        return await Posts.findByIdAndDelete(id);
     } catch (error) {
         console.log(error);
     } finally {
